@@ -1,5 +1,5 @@
 <script setup>
-// import '../styles/sass.scss';
+import '../styles/sass.scss';
 </script>
 
 <template>

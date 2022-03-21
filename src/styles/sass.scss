@@ -1,0 +1,87 @@
+/* Modularidade
+
+A modularidade dá total liberdade ao programador para dividir seu código de acordo com sua arquitetura
+de projeto. Facilita a identificação e a manutenção.
+*/
+@import "./mixin.scss";
+@import "./vars.scss";
+
+.sass {
+  font-family: $font-family;
+  background: $light-color;
+  border-radius: 8px;
+  padding: 32px;
+
+  /* Hierarquia aplicada com o padrão de desenvolvimento BEM
+  
+  Bloco: é uma entidade independente. Um módulo ou componente inteiro. Um container de elementos.
+  Elemento: é um elemento-filho de um bloco. Não pode ser isolado do pai.
+  Modificador: é um modificador de estado, ou seja, serve pra diferenciar um estado ou variante.
+
+  Exemplo: .bloco__elemento--modificador - Estilizar o componente de relatórios (bloco),
+  seu título (elemento) e seus estados (modificadores)
+
+  .relatório {
+    padding: 16px;
+
+    &__título {
+      font-size: 20px;
+
+      &--vermelho {
+        color: red;
+      }
+
+      &--amarelo {
+        color: yellow;
+      }
+    }
+  }
+  
+  */
+  &__title {
+    color: $secondary-color;
+  }
+
+  &__hierarchy {
+    @include card-border($secondary-color);
+
+    p {
+      color: $secondary-color;
+
+      &:first-of-type {
+        text-decoration: underline;
+        font-size: 24px;
+      }
+
+      &:last-of-type {
+        font-style: italic;
+        font-size: 12px;
+      }
+    }
+  }
+
+  &__image-wrapper {
+    @include flex-center();
+    @include card-border($secondary-color);
+
+    img {
+      height: 196px;
+      width: 196px;
+      border-radius: 50%;
+    }
+  }
+
+  // Os extends são usados para replicar estilos inteiros de uma classe, mas geram uma compilação mais leve.
+  &__extend {
+    @extend .sass__image-wrapper;
+  }
+
+  // Os mixins permitem replicar trechos específicos de estilo e aceitam parâmetros, mas repetem mais código na compilação.
+  &__mixin {
+    @include flex-center();
+    padding: 16px;
+    border-radius: 24px;
+    border: 1px dashed $dark-color;
+    background: $secondary-color;
+  }
+}

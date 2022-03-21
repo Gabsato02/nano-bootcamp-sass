@@ -1,0 +1,13 @@
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+// Variáveis passadas para um mixin devem estar entre #{} para serem utilizadas
+@mixin card-border($color) {
+  border: 1px solid #{$color};
+  border-radius: 8px;
+  padding: 16px;
+  margin-bottom: 16px;
+}
